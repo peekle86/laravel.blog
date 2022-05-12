@@ -22,6 +22,8 @@ class Category extends Model
     use HasFactory;
     use Sluggable;
 
+    protected $fillable = ['title'];
+
     /**
      * Establish a relationship with Post model | one(Category) > many(Posts)
      *
