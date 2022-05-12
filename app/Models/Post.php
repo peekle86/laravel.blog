@@ -24,6 +24,8 @@ class Post extends Model
     use HasFactory;
     use Sluggable;
 
+    protected $fillable = ['title', 'body', 'category_id'];
+
     /**
      * Establish relationship with Tag model | many > many
      *
@@ -31,7 +33,7 @@ class Post extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
     /**
