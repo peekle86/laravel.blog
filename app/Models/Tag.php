@@ -22,6 +22,8 @@ class Tag extends Model
     use HasFactory;
     use Sluggable;
 
+    protected $fillable = ['title'];
+
     /**
      * Establish relationship with Post model | many > many
      *
