@@ -25,7 +25,7 @@
                         </div>
                         <!-- /.card-header -->
 
-                        <form role="form" method="post" action="{{ route('posts.store') }}">
+                        <form role="form" method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -37,8 +37,7 @@
 
                                 <div class="form-group">
                                     <label for="body">Body</label>
-                                    <textarea name="body" class="form-control @error('body') is-invalid @enderror" id="content" rows="7"
-                                              placeholder="Body ..."></textarea>
+                                    <textarea name="body" class="form-control @error('body') is-invalid @enderror" id="body" rows="7" placeholder="Body ..."></textarea>
                                 </div>
 
                                 <div class="form-group">

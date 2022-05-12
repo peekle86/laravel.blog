@@ -38,7 +38,7 @@
 
                                 <div class="form-group">
                                     <label for="body">Body</label>
-                                    <textarea name="body" class="form-control @error('body') is-invalid @enderror" id="content" rows="7">{{ $post->body }}</textarea>
+                                    <textarea name="body" class="form-control @error('body') is-invalid @enderror" id="body" rows="7">{{ $post->body }}</textarea>
                                 </div>
 
                                 <div class="form-group">
