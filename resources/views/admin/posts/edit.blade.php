@@ -1,6 +1,8 @@
 @extends('admin.layouts.main')
 
 
+@section('title', 'Edit post | LARAVEL.BLOG')
+
 @section('content')
 
     <!-- Content Header (Page header) -->

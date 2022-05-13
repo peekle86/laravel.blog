@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -58,6 +59,30 @@ class Post extends Model
                 'source' => 'title'
             ]
         ];
+    }
+
+    /**
+     * Return pretty date info
+     *
+     * Like: 12 June 2000
+     *
+     * @return string
+     */
+    public function getPostDate()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d F Y');
+    }
+
+    /**
+     * Looking for a similar value in the title attribute
+     *
+     * @param $query
+     * @param $search
+     * @return mixed
+     */
+    public function scopeLike($query, $search)
+    {
+        return $query->where('title', 'LIKE', "%{$search}%");
     }
 
 }

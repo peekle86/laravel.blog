@@ -88,7 +88,11 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        Tag::destroy($id);
+        $tag = Tag::find($id);
+        if ($tag->posts->count())
+            return redirect()->route('tags.index')->with('error', 'Cannot delete because tag is in use');
+
+        $tag->delete();
         return redirect()->route('tags.index')->with('success', 'Tag deleted');
     }
 }

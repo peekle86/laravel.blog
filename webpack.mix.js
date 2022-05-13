@@ -34,3 +34,13 @@ mix.copyDirectory('resources/assets/admin/img',
 
 mix.copy('resources/assets/admin/css/adminlte.min.css.map',
     'public/assets/admin/css/adminlte.min.css.map');
+
+
+// FRONT
+mix.styles([
+    'resources/assets/front/css/blog.css'
+], 'public/assets/front/css/blog.css');
+
+mix.scripts([
+    'resources/assets/front/js/scripts.js'
+], 'public/assets/front/js/scripts.js');

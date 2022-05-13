@@ -1,6 +1,8 @@
 @extends('admin.layouts.main')
 
 
+@section('title', 'Tags list | LARAVEL.BLOG')
+
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">

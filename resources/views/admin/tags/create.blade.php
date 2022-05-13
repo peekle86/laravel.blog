@@ -1,6 +1,8 @@
 @extends('admin.layouts.main')
 
 
+@section('title', 'Create tag | LARAVEL.BLOG')
+
 @section('content')
 
     <!-- Content Header (Page header) -->

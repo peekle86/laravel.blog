@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome')->name('index');
-});
+Route::get('/', 'SiteController@index')->name('home');
+Route::get('/articles', 'SiteController@articles')->name('site.articles');
+Route::get('/article/{slug}', 'SiteController@show')->name('site.article');
+Route::get('/category/{slug}', 'CategoryController@show')->name('category.articles');
+Route::get('/tag/{slug}', 'TagController@show')->name('tag.articles');
+Route::get('/search', 'SearchController@index')->name('search');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'MainController@index')->name('admin.index');
@@ -24,10 +27,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     Route::resource('/posts', 'PostController');
 });
 
-Route::group(['middleware' => 'guest'], function () {
+Route::group(['middleware' => 'guest', 'namespace' => 'Admin'], function () {
     Route::get('/login', 'UserController@loginForm')->name('login.create');
     Route::post('/login', 'UserController@login')->name('login');
 });
 
-
-Route::get('/logout', 'UserController@logout')->name('logout');
+Route::get('/logout', 'Admin\UserController@logout')->name('logout');

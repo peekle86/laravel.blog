@@ -17,9 +17,9 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            return $next($request);
+        if (Auth::check()) { // if user is logged in
+            return $next($request); // go ahead
         }
-        abort(404);
+        abort(404); // stop, only for authorized users
     }
 }
