@@ -57,20 +57,23 @@
         From the depth of the rocks
     </h3>
 
-    @foreach($posts as $post)
-        <article class="blog-post">
-            <a href="{{ route('site.article', ['slug' => $post->slug]) }}" class="h2 blog-post-title link-dark">{{ $post->title }}</a>
-            <p class="blog-post-meta text-muted">{{ $post->getPostDate() }}</p>
-            <a href="{{ route('category.articles', ['slug' => $post->category->slug]) }}" class="btn btn-secondary badge m-1">{{ $post->category->title }}</a>
-            <p>{{ Illuminate\Support\Str::limit(strip_tags($thirdPost->body), 300) }}</p>
-            <a href="{{ route('site.article', ['slug' => $post->slug]) }}">Continue reading</a>
-        </article>
-        <hr class="my-4">
-    @endforeach
+    @if($posts->count())
+        @foreach($posts as $post)
+            <article class="blog-post">
+                <a href="{{ route('site.article', ['slug' => $post->slug]) }}" class="h2 blog-post-title link-dark">{{ $post->title }}</a>
+                <p class="blog-post-meta text-muted">{{ $post->getPostDate() }}</p>
+                <a href="{{ route('category.articles', ['slug' => $post->category->slug]) }}" class="btn btn-secondary badge m-1">{{ $post->category->title }}</a>
+                <p>{{ Illuminate\Support\Str::limit(strip_tags($thirdPost->body), 300) }}</p>
+                <a href="{{ route('site.article', ['slug' => $post->slug]) }}">Continue reading</a>
+            </article>
+            <hr class="my-4">
+        @endforeach
 
 
-    <div class="d-flex justify-content-center">
-        <a href="{{ route('site.articles') }}" class="btn btn-link">Show more articles</a>
-    </div>
-
+        <div class="d-flex justify-content-center">
+            <a href="{{ route('site.articles') }}" class="btn btn-link">Show more articles</a>
+        </div>
+    @else
+        <p class="h2 text-center">There are no articles yet</p>
+    @endif
 @endsection
