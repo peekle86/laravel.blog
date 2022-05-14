@@ -27,7 +27,7 @@ mix.scripts([
     'resources/assets/admin/js/demo.js'
 ], 'public/assets/admin/js/admin.js');
 
-mix.js('resources/assets/admin/js/imageHandle.js', 'public/assets/admin/js/imageHandle.js');
+mix.scripts('resources/assets/admin/js/imageHandle.js', 'public/assets/admin/js/imageHandle.js');
 
 mix.copyDirectory('resources/assets/admin/plugins/fontawesome-free/webfonts',
     'public/assets/admin/webfonts');
