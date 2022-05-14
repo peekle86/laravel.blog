@@ -1,0 +1,6 @@
+.body-input {
+    border: 1px solid #ced4da;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    min-height: 10rem; height: auto;
+}

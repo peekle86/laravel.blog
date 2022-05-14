@@ -27,7 +27,7 @@
                         </div>
                         <!-- /.card-header -->
 
-                        <form role="form" method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                        <form id="post-form" role="form" method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -38,8 +38,16 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <button type="button" class="btn btn-outline-primary" onclick="search_image(this)" data-url="{{ route('admin.image.search') }}" data-token="{{ csrf_token() }}">
+                                        Search image
+                                    </button>
+                                    <div id="founded-img" class="m-3"></div>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="body">Body</label>
-                                    <textarea name="body" class="form-control @error('body') is-invalid @enderror" id="body" rows="7" placeholder="Body ..."></textarea>
+                                    <textarea name="body" id="body" rows="7" hidden></textarea>
+                                    <div id="body-edit" contenteditable="true" class="body-input @error('body') is-invalid @enderror"></div>
                                 </div>
 
                                 <div class="form-group">
@@ -80,4 +88,8 @@
     </section>
     <!-- /.content -->
 
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/admin/js/imageHandle.js') }}"></script>
 @endsection

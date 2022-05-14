@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     Route::resource('/categories', 'CategoryController');
     Route::resource('/tags', 'TagController');
     Route::resource('/posts', 'PostController');
+    Route::post('/search-image', 'ImageController@search')->name('admin.image.search');
 });
 
 Route::group(['middleware' => 'guest', 'namespace' => 'Admin'], function () {

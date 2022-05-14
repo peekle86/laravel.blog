@@ -27,20 +27,26 @@
                         </div>
                         <!-- /.card-header -->
 
-                        <form role="form" method="post" action="{{ route('posts.update', ['post' => $post->id]) }}">
+                        <form id="post-form" role="form" method="post" action="{{ route('posts.update', ['post' => $post->id]) }}">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" name="title"
-                                           class="form-control @error('title') is-invalid @enderror" id="title"
-                                           value="{{ $post->title }}">
+                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ $post->title }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-outline-primary" onclick="search_image(this)" data-url="{{ route('admin.image.search') }}" data-token="{{ csrf_token() }}">
+                                        Search image
+                                    </button>
+                                    <div id="founded-img" class="m-3"></div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="body">Body</label>
-                                    <textarea name="body" class="form-control @error('body') is-invalid @enderror" id="body" rows="7">{{ $post->body }}</textarea>
+                                    <textarea name="body" id="body" rows="7" hidden>{!! $post->body !!}</textarea>
+                                    <div id="body-edit" contenteditable="true" class="body-input @error('body') is-invalid @enderror">{!! $post->body !!}</div>
                                 </div>
 
                                 <div class="form-group">
@@ -81,4 +87,9 @@
     </section>
     <!-- /.content -->
 
+
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/admin/js/imageHandle.js') }}"></script>
 @endsection

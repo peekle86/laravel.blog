@@ -16,6 +16,7 @@ mix.styles([
     'resources/assets/admin/plugins/select2/css/select2.css',
     'resources/assets/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.css',
     'resources/assets/admin/css/adminlte.min.css',
+    'resources/assets/admin/css/site.css',
 ], 'public/assets/admin/css/admin.css');
 
 mix.scripts([
@@ -25,6 +26,8 @@ mix.scripts([
     'resources/assets/admin/js/adminlte.min.js',
     'resources/assets/admin/js/demo.js'
 ], 'public/assets/admin/js/admin.js');
+
+mix.js('resources/assets/admin/js/imageHandle.js', 'public/assets/admin/js/imageHandle.js');
 
 mix.copyDirectory('resources/assets/admin/plugins/fontawesome-free/webfonts',
     'public/assets/admin/webfonts');
